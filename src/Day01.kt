@@ -1,17 +1,23 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    val elves = mutableListOf<MutableList<Int>>(mutableListOf())
+
+    for (line in readInput("01_input")){
+        if (line == ""){
+            elves.add(mutableListOf())
+            continue
+        }
+
+        elves.last() += line.toInt()
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
+    val max = elves.reduce { acc, calorieList ->
+        acc.add(calorieList.sum())
+        acc
     }
+    max.sortDescending()
+    //part 1 res
+    println(max[0])
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    //part 2 res
+    println(max.take(3).sum())
 }
