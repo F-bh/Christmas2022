@@ -8,6 +8,9 @@ import java.security.MessageDigest
 fun readInput(name: String) = File("src", "$name.txt")
     .readLines()
 
+fun readDayInput(day: Int) = File("src", "${if (day < 10) "0$day" else day}_input.txt")
+    .readLines()
+
 /**
  * Converts string to md5 hash.
  */
